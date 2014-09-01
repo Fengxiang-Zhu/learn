@@ -1,0 +1,25 @@
+git使用https协议，每次pull，push都要输入密码，相当的烦。
+使用git协议，然后使用ssh密钥。这样可以省去每次都输密码。
+
+大概需要三个步骤：
+一，本地生成密钥对；
+二，设置github上的公钥；
+三，修改git的remote url为git协议。
+
+一，生成密钥对。
+大多数Git服务器都会选择使用SSH公钥来进行授权。
+SSH公钥默认存储在账户的主目录下的～/.ssh目录。
+
+$ ssh-keygen -t rsa -C "your_email@youremail.com"
+
+二，添加公钥到你的github账户
+1.查看你生成的公钥，
+cat ~/.ssh/id_rsa.pub
+2.登录github账户。Add SSH key.
+3. 验证key是否正常工作
+$ ssh -T git@github.com
+
+三，修改你本地的ssh remote url. 不用https协议，改用git协议
+1,用git remote -v 查看你当前的remote url
+2,使用git remote set-url origin git@github.com：someaccoount/someproject.git
+OK.
