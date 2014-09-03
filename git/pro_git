@@ -11,4 +11,4 @@
     git add file-name
 2.2.3 暂存已修改文件
 	git add file-name
-2.2.4 
+2.2.4 忽略某些文件
